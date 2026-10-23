@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoventis — Smart Water Delivery Platform</title>
+    <meta name="description" content="Hoventis builds WaterTins — a smart water delivery platform connecting customers with local water suppliers for hassle-free doorstep delivery.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            background: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1a1a2e;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0066FF, #00C2FF);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0066FF;
+        }
+
+        .nav-cta {
+            background: #0066FF !important;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: #0052CC !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f4ff;
+            color: #0066FF;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid #cce4ff;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            color: #0d1117;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #0066FF, #00C2FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #0066FF;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #0052CC;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #eaeaea;
+            transform: translateY(-1px);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 48px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0066FF;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 80px 24px;
+            background: #fafafa;
+        }
+
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0066FF;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 3.5vw, 38px);
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
+            color: #0d1117;
+        }
+
+        .section-desc {
+            font-size: 17px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+        }
+
+        .problem-card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .problem-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .problem-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 24px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #cce4ff;
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #e8f4ff, #cce4ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Product Section */
+        .product {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: white;
+        }
+
+        .product .section-tag {
+            color: #58a6ff;
+        }
+
+        .product .section-title {
+            color: white;
+        }
+
+        .product .section-desc {
+            color: #8b949e;
+        }
+
+        .product-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .stack-item {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stack-item .emoji {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .stack-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .stack-item p {
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        /* AI Section */
+        .ai-section {
+            padding: 80px 24px;
+            background: #f0f7ff;
+        }
+
+        .ai-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .ai-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .ai-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About / Founder */
+        .about {
+            padding: 80px 24px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066FF, #00C2FF);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .about-text h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .about-text .role {
+            color: #0066FF;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .about-text p {
+            font-size: 14px;
+            color: #666;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #0066FF, #00C2FF);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 3.5vw, 38px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 17px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .cta .btn-white {
+            background: white;
+            color: #0066FF;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .cta .btn-white:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 24px;
+            background: #0d1117;
+            color: #8b949e;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-info {
+            font-size: 12px;
+            color: #484f58;
+        }
+
+        .footer-info p {
+            margin-bottom: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                gap: 24px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <div class="logo-icon">H</div>
+            <span class="logo-text">Hoventis</span>
+        </a>
+        <div class="nav-links">
+            <a href="#product">Product</a>
+            <a href="#features">Features</a>
+            <a href="#ai">AI Integration</a>
+            <a href="#about">About</a>
+            <a href="mailto:bala@hoventis.in" class="nav-cta">Contact Us</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-badge">🚀 Registered MSME Enterprise — UDYAM-TS-09-0199927</div>
+    <h1>Smart Water Delivery<br><span>Platform for India</span></h1>
+    <p>Hoventis builds <strong>WaterTins</strong> — a full-stack water delivery platform connecting customers with local water suppliers for hassle-free doorstep delivery.</p>
+    <div class="hero-buttons">
+        <a href="mailto:bala@hoventis.in" class="btn-primary">
+            Get In Touch →
+        </a>
+        <a href="#product" class="btn-secondary">Learn More</a>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Apps Built</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">API Endpoints</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">2025</div>
+            <div class="stat-label">Founded</div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+    <div class="section-container">
+        <div class="section-tag">The Problem</div>
+        <h2 class="section-title">Water delivery in India is still manual</h2>
+        <p class="section-desc">Millions of households rely on water can delivery, yet the entire process runs on phone calls, cash, and guesswork.</p>
+        <div class="problem-cards">
+            <div class="problem-card">
+                <div class="icon">📞</div>
+                <h3>Phone-Based Ordering</h3>
+                <p>Customers still call suppliers to place orders. No tracking, no confirmation, no visibility.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">💸</div>
+                <h3>Cash-Only Payments</h3>
+                <p>Suppliers lose track of payments. Monthly billing is error-prone and creates disputes.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">📋</div>
+                <h3>Zero Analytics</h3>
+                <p>Suppliers can't predict demand, track deliveries, or optimize routes. Everything is manual.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="section-container">
+        <div class="section-tag">Features</div>
+        <h2 class="section-title">Everything a water business needs</h2>
+        <p class="section-desc">WaterTins digitizes the entire water delivery chain — from ordering to delivery to payments.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3>Smart Ordering</h3>
+                <p>Customers browse catalogs, select products, choose delivery slots, and order in seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Delivery Management</h3>
+                <p>2-hour delivery slots, real-time tracking, staff assignment, and route optimization.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Digital Payments</h3>
+                <p>PayU integration for instant payments. Bill Later option for connected customers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Supplier Dashboard</h3>
+                <p>Revenue analytics, order trends, customer insights, and commission tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Auto-Order</h3>
+                <p>Recurring subscriptions for regular customers. Set it once, get water automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Auth</h3>
+                <p>Firebase phone authentication for mobile apps. JWT-based admin access.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product / Tech Stack -->
+<section class="product" id="product">
+    <div class="section-container">
+        <div class="section-tag">Our Product — WaterTins</div>
+        <h2 class="section-title">Built with modern technology</h2>
+        <p class="section-desc">A production-grade monorepo with 4 applications serving customers, suppliers, delivery staff, and administrators.</p>
+        <div class="product-stack">
+            <div class="stack-item">
+                <div class="emoji">📱</div>
+                <h4>Customer App</h4>
+                <p>React Native + Expo</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🏪</div>
+                <h4>Supplier App</h4>
+                <p>React Native + Expo</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🖥️</div>
+                <h4>Admin Dashboard</h4>
+                <p>React + Vite</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🚚</div>
+                <h4>Delivery Web</h4>
+                <p>React + Vite</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">⚙️</div>
+                <h4>Backend API</h4>
+                <p>Node.js + TypeScript</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🗄️</div>
+                <h4>Database</h4>
+                <p>MongoDB Atlas</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🗺️</div>
+                <h4>Maps</h4>
+                <p>Google Maps Platform</p>
+            </div>
+            <div class="stack-item">
+                <div class="emoji">🔑</div>
+                <h4>Auth</h4>
+                <p>Firebase + JWT</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Integration -->
+<section class="ai-section" id="ai">
+    <div class="section-container">
+        <div class="section-tag">AI Integration</div>
+        <h2 class="section-title">Powered by AI for smarter operations</h2>
+        <p class="section-desc">We're integrating AI models to automate customer support, predict demand, and enable natural language ordering.</p>
+        <div class="ai-cards">
+            <div class="ai-card">
+                <h3>🤖 AI Customer Support</h3>
+                <p>Automated chatbot that handles order queries, delivery updates, complaints, and FAQs via in-app chat — reducing support load by 80%.</p>
+            </div>
+            <div class="ai-card">
+                <h3>📈 Smart Demand Forecasting</h3>
+                <p>AI analyzes historical order patterns to predict daily demand for each supplier, reducing water wastage and optimizing inventory.</p>
+            </div>
+            <div class="ai-card">
+                <h3>💬 Natural Language Orders</h3>
+                <p>Customers place orders via text messages like "Send 2 cans tomorrow morning" — parsed and processed by AI automatically.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="section-container">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Built by engineers, for India</h2>
+        <div class="about-content">
+            <div class="about-avatar">BS</div>
+            <div class="about-text">
+                <h3>Bala Sai Boppana</h3>
+                <div class="role">Founder & AI Engineer</div>
+                <p>Full-stack developer and AI engineer with hands-on experience in LLM-powered applications, RAG pipelines, and production API systems. Building WaterTins to digitize water delivery for millions of Indian households.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Ready to modernize your water business?</h2>
+    <p>Join us in building the future of water delivery in India.</p>
+    <a href="mailto:bala@hoventis.in" class="btn-white">Contact Us — bala@hoventis.in</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="#product">Product</a>
+            <a href="#features">Features</a>
+            <a href="#ai">AI Integration</a>
+            <a href="#about">About</a>
+            <a href="mailto:bala@hoventis.in">Contact</a>
+        </div>
+        <div class="footer-info">
+            <p><strong>Hoventis</strong> — UDYAM-TS-09-0199927 | Registered MSME Enterprise</p>
+            <p>Hyderabad, Telangana, India | bala@hoventis.in</p>
+            <p>© 2025 Hoventis. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
