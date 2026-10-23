@@ -3,703 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoventis — The Future of Water Delivery</title>
-    <meta name="description" content="Hoventis builds WaterTins — India's smartest water delivery platform. AI-powered, full-stack, production-ready.">
+    <title>Hoventis — Intelligent Water Delivery Infrastructure</title>
+    <meta name="description" content="Hoventis builds WaterTins, India's intelligent water delivery platform. Digitizing a 32,000 Cr industry.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000;
-            --surface: #111111;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-hover: rgba(255, 255, 255, 0.1);
-            --text: #f5f5f7;
-            --text-secondary: #86868b;
-            --accent: #2997ff;
-            --accent-glow: rgba(41, 151, 255, 0.15);
-            --green: #30d158;
-            --purple: #bf5af2;
-            --orange: #ff9f0a;
-            --pink: #ff375f;
+            --bg: #09090b;
+            --surface: #0f0f12;
+            --border: rgba(255,255,255,0.06);
+            --text: #fafafa;
+            --muted: #71717a;
+            --accent: #3b82f6;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            line-height:1.6;
         }
 
-        /* ===== NAVIGATION ===== */
+        /* NAV */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position:fixed; top:0; width:100%; z-index:100;
+            background:rgba(9,9,11,0.8);
+            backdrop-filter:blur(20px);
+            -webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border);
         }
-
         .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width:1100px; margin:0 auto; padding:0 24px;
+            height:56px; display:flex; align-items:center; justify-content:space-between;
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text);
-        }
-
+        .logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
         .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            border-radius: 8px;
-            display: grid;
-            place-items: center;
-            font-weight: 900;
-            font-size: 16px;
-            color: white;
+            width:28px; height:28px; background:var(--accent); border-radius:7px;
+            display:grid; place-items:center; font-weight:800; font-size:14px; color:#fff;
+        }
+        .logo span { font-size:16px; font-weight:700; letter-spacing:-0.3px; }
+        .nav-links { display:flex; gap:24px; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:13px; font-weight:500; transition:color .2s; }
+        .nav-links a:hover { color:var(--text); }
+        .nav-btn {
+            background:var(--text)!important; color:var(--bg)!important;
+            padding:7px 18px; border-radius:6px; font-weight:600!important; font-size:13px!important;
         }
 
-        .logo-name {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
+        /* SECTIONS */
+        .section { padding:100px 24px; }
+        .container { max-width:1000px; margin:0 auto; }
+        .label { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent); margin-bottom:12px; }
+        .title { font-size:clamp(32px,5vw,54px); font-weight:800; letter-spacing:-2px; line-height:1.08; margin-bottom:16px; }
+        .subtitle { font-size:17px; color:var(--muted); max-width:520px; line-height:1.7; margin-bottom:48px; }
 
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.01em;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--text); }
-
-        .nav-cta {
-            background: var(--accent) !important;
-            color: white !important;
-            padding: 6px 16px !important;
-            border-radius: 980px;
-            font-size: 12px !important;
-        }
-
-        /* ===== HERO ===== */
+        /* HERO */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 24px 80px;
-            position: relative;
-            overflow: hidden;
+            min-height:100vh; display:flex; flex-direction:column;
+            align-items:center; justify-content:center; text-align:center;
+            padding:140px 24px 100px; position:relative;
         }
-
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(41, 151, 255, 0.12) 0%, rgba(191, 90, 242, 0.06) 40%, transparent 70%);
-            pointer-events: none;
+            content:''; position:absolute; top:-200px; left:50%; transform:translateX(-50%);
+            width:600px; height:600px;
+            background:radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+            pointer-events:none;
         }
-
-        .hero-overline {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hero-overline::before,
-        .hero-overline::after {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: var(--accent);
-            opacity: 0.4;
-        }
-
-        .hero h1 {
-            font-size: clamp(44px, 7vw, 80px);
-            font-weight: 900;
-            letter-spacing: -3px;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            max-width: 900px;
-        }
-
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 50%, var(--pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: clamp(16px, 2vw, 20px);
-            color: var(--text-secondary);
-            max-width: 540px;
-            margin-bottom: 40px;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+        .hero .label { color:var(--muted); letter-spacing:2px; }
+        .hero .title { max-width:800px; }
+        .hero .subtitle { max-width:480px; margin:0 auto 40px; }
+        .hero-cta { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
         .btn {
-            padding: 14px 28px;
-            border-radius: 980px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            padding:12px 24px; border-radius:8px; font-size:14px; font-weight:600;
+            text-decoration:none; transition:all .2s; display:inline-block;
         }
+        .btn-primary { background:var(--text); color:var(--bg); }
+        .btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+        .btn-outline { border:1px solid rgba(255,255,255,0.15); color:var(--text); }
+        .btn-outline:hover { border-color:rgba(255,255,255,0.3); }
 
-        .btn-fill {
-            background: var(--accent);
-            color: white;
+        /* NUMBERS */
+        .numbers {
+            padding:0 24px 80px;
         }
-
-        .btn-fill:hover {
-            background: #0a84ff;
-            transform: scale(1.03);
+        .numbers-grid {
+            max-width:1000px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(4,1fr);
+            border:1px solid var(--border); border-radius:12px; overflow:hidden;
         }
-
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .num {
+            padding:32px 20px; text-align:center;
+            border-right:1px solid var(--border);
         }
+        .num:last-child { border-right:none; }
+        .num-val { font-size:32px; font-weight:800; letter-spacing:-1px; }
+        .num-desc { font-size:12px; color:var(--muted); margin-top:4px; font-weight:500; }
 
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.14);
+        /* GRID CARDS */
+        .card-grid {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px;
+            background:var(--border); border-radius:12px; overflow:hidden;
+            border:1px solid var(--border);
         }
-
-        /* ===== METRICS BAR ===== */
-        .metrics {
-            padding: 0 24px 80px;
+        .card {
+            background:var(--surface); padding:36px 28px;
         }
+        .card h3 { font-size:16px; font-weight:700; margin-bottom:8px; letter-spacing:-0.3px; }
+        .card p { font-size:14px; color:var(--muted); line-height:1.7; }
+        .card .stat { font-size:28px; font-weight:800; color:var(--accent); margin-bottom:8px; letter-spacing:-1px; }
 
-        .metrics-inner {
-            max-width: 960px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
+        /* FEATURE LIST */
+        .feat-grid {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px;
+            background:var(--border); border-radius:12px; overflow:hidden;
+            border:1px solid var(--border);
         }
-
-        .metric {
-            background: var(--surface);
-            padding: 32px 16px;
-            text-align: center;
+        .feat {
+            background:var(--surface); padding:28px 24px;
         }
+        .feat h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+        .feat p { font-size:13px; color:var(--muted); line-height:1.6; }
 
-        .metric-value {
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--text), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* PRODUCT */
+        .product-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:1px;
+            background:var(--border); border-radius:12px; overflow:hidden;
+            border:1px solid var(--border);
         }
-
-        .metric-value .unit {
-            font-size: 18px;
-            font-weight: 600;
+        .product-card {
+            background:var(--surface); padding:40px 32px;
         }
+        .product-card .num-small { font-size:11px; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+        .product-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px; }
+        .product-card p { font-size:14px; color:var(--muted); line-height:1.7; }
 
-        .metric-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            font-weight: 500;
-        }
-
-        /* ===== SECTION SHARED ===== */
-        section {
-            padding: 100px 24px;
-        }
-
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-
-        .sec-overline {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-
-        .sec-title {
-            font-size: clamp(32px, 4.5vw, 52px);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .sec-desc {
-            font-size: 17px;
-            color: var(--text-secondary);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 48px;
-        }
-
-        /* ===== PROBLEM ===== */
-        .problem {
-            background: var(--surface);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .problem .sec-overline { color: var(--pink); }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
-        }
-
-        .problem-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s;
-        }
-
-        .problem-card:hover {
-            background: var(--glass-hover);
-            border-color: rgba(255, 55, 95, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .problem-stat {
-            font-size: 40px;
-            font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 4px;
-        }
-
-        .problem-stat.pink { color: var(--pink); }
-        .problem-stat.orange { color: var(--orange); }
-        .problem-stat.purple { color: var(--purple); }
-
-        .problem-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .problem-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .problem-source {
-            font-size: 11px;
-            color: rgba(255,255,255,0.25);
-            margin-top: 8px;
-            font-style: italic;
-        }
-
-        /* ===== SOLUTION / PRODUCT ===== */
-        .solution .sec-overline { color: var(--green); }
-
-        .product-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
-
-        .product-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 28px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .product-item:hover::before { opacity: 1; }
-
-        .product-item:hover {
-            background: var(--glass-hover);
-            transform: translateY(-3px);
-        }
-
-        .product-emoji {
-            font-size: 36px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .product-item h3 {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .product-item .tech {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .product-item p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ===== FEATURES ===== */
-        .features {
-            background: var(--surface);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .features .sec-overline { color: var(--accent); }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .feature-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s;
-        }
-
-        .feature-item:hover {
-            background: var(--glass-hover);
-            border-color: rgba(41, 151, 255, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .feature-item h4 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .feature-item p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ===== AI SECTION ===== */
-        .ai .sec-overline { color: var(--purple); }
-
+        /* AI */
         .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px;
+            background:var(--border); border-radius:12px; overflow:hidden;
+            border:1px solid var(--border);
         }
-
         .ai-card {
-            background: linear-gradient(135deg, rgba(191, 90, 242, 0.08), rgba(41, 151, 255, 0.05));
-            border: 1px solid rgba(191, 90, 242, 0.15);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s;
+            background:var(--surface); padding:36px 28px;
         }
-
-        .ai-card:hover {
-            border-color: rgba(191, 90, 242, 0.35);
-            transform: translateY(-2px);
+        .ai-card .tag {
+            display:inline-block; font-size:10px; font-weight:700;
+            text-transform:uppercase; letter-spacing:1px;
+            color:var(--accent); margin-bottom:12px;
         }
+        .ai-card h3 { font-size:18px; font-weight:700; margin-bottom:8px; letter-spacing:-0.3px; }
+        .ai-card p { font-size:14px; color:var(--muted); line-height:1.7; }
 
-        .ai-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* FOUNDER */
+        .founder-row {
+            display:flex; gap:28px; align-items:center; flex-wrap:wrap;
+            border:1px solid var(--border); border-radius:12px;
+            background:var(--surface); padding:40px 36px;
         }
-
-        .ai-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .avatar {
+            width:72px; height:72px; background:var(--accent); border-radius:16px;
+            display:grid; place-items:center; font-weight:800; font-size:24px; color:#fff; flex-shrink:0;
         }
-
-        .ai-tag {
-            display: inline-block;
-            background: rgba(191, 90, 242, 0.15);
-            color: var(--purple);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-top: 12px;
+        .founder-text h3 { font-size:20px; font-weight:700; letter-spacing:-0.5px; }
+        .founder-text .role { font-size:13px; color:var(--accent); font-weight:600; margin-bottom:6px; }
+        .founder-text p { font-size:13px; color:var(--muted); line-height:1.7; max-width:480px; }
+        .f-links { display:flex; gap:8px; margin-top:14px; }
+        .f-links a {
+            padding:6px 14px; border:1px solid var(--border); border-radius:6px;
+            color:var(--muted); text-decoration:none; font-size:12px; font-weight:600; transition:all .2s;
         }
+        .f-links a:hover { color:var(--text); border-color:rgba(255,255,255,0.2); }
 
-        /* ===== TECH STACK ===== */
-        .stack {
-            background: var(--surface);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
+        /* CTA */
+        .cta-sec {
+            text-align:center; padding:120px 24px; position:relative;
         }
-
-        .stack .sec-overline { color: var(--orange); }
-
-        .stack-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .cta-sec::before {
+            content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+            width:500px; height:500px;
+            background:radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 60%);
+            pointer-events:none;
         }
+        .cta-sec h2 { font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-1.5px; margin-bottom:12px; }
+        .cta-sec p { color:var(--muted); font-size:16px; margin-bottom:28px; }
+        .cta-email { color:var(--muted); font-size:13px; margin-top:20px; }
 
-        .stack-pill {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 10px 20px;
-            border-radius: 980px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-
-        .stack-pill:hover {
-            color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: var(--glass-hover);
-        }
-
-        /* ===== FOUNDER ===== */
-        .founder .sec-overline { color: var(--green); }
-
-        .founder-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 48px;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .founder-avatar {
-            width: 88px;
-            height: 88px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            border-radius: 22px;
-            display: grid;
-            place-items: center;
-            font-size: 32px;
-            font-weight: 900;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .founder-info h3 {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .founder-info .role {
-            color: var(--accent);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .founder-info p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 500px;
-        }
-
-        .founder-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 16px;
-        }
-
-        .founder-link {
-            padding: 8px 16px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .founder-link:hover {
-            color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* ===== CTA ===== */
-        .cta-section {
-            text-align: center;
-            padding: 120px 24px;
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(41, 151, 255, 0.1) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(32px, 4.5vw, 48px);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            font-size: 17px;
-            margin-bottom: 32px;
-        }
-
-        .cta-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         footer {
-            border-top: 1px solid var(--glass-border);
-            padding: 40px 24px;
-            text-align: center;
+            border-top:1px solid var(--border); padding:32px 24px; text-align:center;
         }
-
-        .footer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+        .footer-reg {
+            display:inline-block; font-size:11px; color:var(--muted);
+            border:1px solid var(--border); padding:6px 14px; border-radius:6px; margin-bottom:14px;
         }
+        footer p { font-size:11px; color:rgba(255,255,255,0.2); margin-bottom:2px; }
 
-        .footer-badge .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-        }
-
-        footer p {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.25);
-            margin-bottom: 4px;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .metrics-inner { grid-template-columns: repeat(2, 1fr); }
-            .founder-card { padding: 28px; flex-direction: column; text-align: center; }
-            .founder-links { justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .metrics-inner { grid-template-columns: 1fr 1fr; }
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            .nav-links { display:none; }
+            .numbers-grid { grid-template-columns:repeat(2,1fr); }
+            .num { border-bottom:1px solid var(--border); }
+            .product-grid { grid-template-columns:1fr; }
+            .founder-row { flex-direction:column; text-align:center; padding:28px; }
+            .f-links { justify-content:center; }
         }
     </style>
 </head>
@@ -709,239 +218,195 @@
     <div class="nav-inner">
         <a href="#" class="logo">
             <div class="logo-mark">H</div>
-            <span class="logo-name">Hoventis</span>
+            <span>Hoventis</span>
         </a>
         <div class="nav-links">
             <a href="#problem">Problem</a>
             <a href="#product">Product</a>
-            <a href="#features">Features</a>
             <a href="#ai">AI</a>
-            <a href="#about">Team</a>
-            <a href="mailto:bala@hoventis.in" class="nav-cta">Contact</a>
+            <a href="#team">Team</a>
+            <a href="mailto:bala@hoventis.in" class="nav-btn">Contact</a>
         </div>
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="hero-overline">MSME Registered · UDYAM-TS-09-0199927</div>
-    <h1>Reinventing<br><span class="gradient">Water Delivery</span><br>for India.</h1>
-    <p class="hero-sub">Hoventis builds <strong>WaterTins</strong> — a full-stack platform that connects 150M+ Indian households with local water suppliers through intelligent mobile apps and AI-powered operations.</p>
-    <div class="hero-btns">
-        <a href="mailto:bala@hoventis.in" class="btn btn-fill">Get in Touch →</a>
-        <a href="#product" class="btn btn-ghost">Explore Product</a>
+    <p class="label">Registered MSME &middot; Hyderabad, India</p>
+    <h1 class="title">Digitizing India's<br>water delivery<br>infrastructure.</h1>
+    <p class="subtitle">Hoventis is building WaterTins — a platform that replaces phone calls, paper ledgers, and cash with intelligent software for water suppliers and their customers.</p>
+    <div class="hero-cta">
+        <a href="mailto:bala@hoventis.in" class="btn btn-primary">Get in Touch</a>
+        <a href="#product" class="btn btn-outline">Learn More</a>
     </div>
 </section>
 
-<!-- METRICS -->
-<div class="metrics">
-    <div class="metrics-inner">
-        <div class="metric">
-            <div class="metric-value">₹32K<span class="unit">Cr</span></div>
-            <div class="metric-label">India Water Market (2025)</div>
+<div class="numbers">
+    <div class="numbers-grid">
+        <div class="num">
+            <div class="num-val">$3.7B</div>
+            <div class="num-desc">India Water Market 2025</div>
         </div>
-        <div class="metric">
-            <div class="metric-value">14<span class="unit">%</span></div>
-            <div class="metric-label">Annual Growth Rate</div>
+        <div class="num">
+            <div class="num-val">14%</div>
+            <div class="num-desc">Annual Growth Rate</div>
         </div>
-        <div class="metric">
-            <div class="metric-value">4</div>
-            <div class="metric-label">Production Apps</div>
+        <div class="num">
+            <div class="num-val">150M+</div>
+            <div class="num-desc">Households Served Daily</div>
         </div>
-        <div class="metric">
-            <div class="metric-value">2025</div>
-            <div class="metric-label">Founded</div>
+        <div class="num">
+            <div class="num-val">70%</div>
+            <div class="num-desc">Undigitized Market</div>
         </div>
     </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="problem" id="problem">
+<section class="section" id="problem" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="container">
-        <div class="sec-overline">The ₹32,000 Crore Broken Industry</div>
-        <h2 class="sec-title">A massive market<br>running on phone calls.</h2>
-        <p class="sec-desc">India's packaged water market is projected to hit $9.2B by 2032 — yet the 20-litre can delivery segment still operates like it's 2005.</p>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <div class="problem-stat pink">70%</div>
-                <h3>Unorganized & Untracked</h3>
-                <p>Over 70% of India's water can market is controlled by local unorganized vendors with zero digital infrastructure. No order tracking. No payment records. No quality assurance. Thousands of unregistered bottling plants operate without proper RO/UV filtration.</p>
-                <div class="problem-source">Source: IMARC Group, Persistence Market Research</div>
+        <p class="label">The Problem</p>
+        <h2 class="title">A $3.7 billion industry<br>running on phone calls.</h2>
+        <p class="subtitle">India's 20-litre water can market serves over 150 million households. Yet 70% of it operates without any digital infrastructure.</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="stat">70%</div>
+                <h3>Unorganized Market</h3>
+                <p>The majority of India's water can market is controlled by local vendors with no digital tools. Thousands of unregistered bottling plants operate without proper RO/UV filtration, making water quality unverifiable for consumers.</p>
             </div>
-            <div class="problem-card">
-                <div class="problem-stat orange">₹0</div>
-                <h3>Zero Tech Adoption</h3>
-                <p>Suppliers manage 100+ daily deliveries using paper registers and WhatsApp groups. No demand forecasting. No route optimization. Manual billing causes payment disputes worth lakhs annually. Every water supplier is one spreadsheet crash away from chaos.</p>
-                <div class="problem-source">Source: Industry interviews & market analysis</div>
+            <div class="card">
+                <div class="stat">Zero</div>
+                <h3>Digital Infrastructure</h3>
+                <p>Suppliers manage hundreds of daily deliveries using paper registers and WhatsApp. No order tracking, no demand forecasting, no automated billing. Payment disputes run into lakhs annually due to manual record-keeping.</p>
             </div>
-            <div class="problem-card">
-                <div class="problem-stat purple">3x</div>
-                <h3>Customer Trust Crisis</h3>
-                <p>Counterfeit water cans are 3x more common than genuine branded ones in tier-2 cities. FSSAI classifies packaged water as "high-risk food." Consumers have no way to verify water quality, supplier credentials, or hygiene compliance before they drink.</p>
-                <div class="problem-source">Source: FSSAI, Bureau of Indian Standards (IS 14543)</div>
+            <div class="card">
+                <div class="stat">3x</div>
+                <h3>Counterfeit Risk</h3>
+                <p>Counterfeit water cans outnumber genuine ones in tier-2 and tier-3 cities. FSSAI classifies packaged water as a "high-risk food category" under IS 14543. Consumers have no way to verify quality or supplier credentials.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PRODUCT -->
-<section class="solution" id="product">
+<section class="section" id="product">
     <div class="container">
-        <div class="sec-overline">Our Product — WaterTins</div>
-        <h2 class="sec-title">One platform.<br>Every stakeholder.</h2>
-        <p class="sec-desc">WaterTins covers the entire water delivery ecosystem — from the customer placing an order to the supplier fulfilling it, all managed through a unified platform.</p>
-        <div class="product-showcase">
-            <div class="product-item">
-                <span class="product-emoji">📱</span>
-                <h3>For Customers</h3>
-                <p>Browse water suppliers nearby, choose delivery slots, track orders in real-time, set up recurring subscriptions, and pay digitally — all from your phone.</p>
+        <p class="label">Product</p>
+        <h2 class="title">WaterTins</h2>
+        <p class="subtitle">A unified platform covering every stakeholder in the water delivery chain — customers, suppliers, delivery staff, and platform administrators.</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="num-small">Customers</div>
+                <h3>Order in seconds, not phone calls</h3>
+                <p>Discover nearby suppliers, browse water products, choose 2-hour delivery windows, track orders in real-time, set up recurring subscriptions, and pay digitally through UPI, cards, or net banking.</p>
             </div>
-            <div class="product-item">
-                <span class="product-emoji">🏪</span>
-                <h3>For Suppliers</h3>
-                <p>Manage your product catalog, accept and assign orders, track daily revenue, handle deposits, and grow your customer base with zero paperwork.</p>
+            <div class="product-card">
+                <div class="num-small">Suppliers</div>
+                <h3>Run your business, not spreadsheets</h3>
+                <p>Manage product catalogs with configurable pricing, accept and assign orders, onboard delivery staff, track revenue and commissions, handle customer deposits, and access monthly business analytics.</p>
             </div>
-            <div class="product-item">
-                <span class="product-emoji">🚚</span>
-                <h3>For Delivery Staff</h3>
-                <p>View assigned deliveries, navigate to customer locations, update delivery status, and manage daily routes — all in one streamlined interface.</p>
+            <div class="product-card">
+                <div class="num-small">Delivery</div>
+                <h3>Optimized routes, zero confusion</h3>
+                <p>View assigned deliveries with customer locations on a map, update delivery status in real-time, manage daily routes, and handle empty can returns — all from a single interface.</p>
             </div>
-            <div class="product-item">
-                <span class="product-emoji">📊</span>
-                <h3>For Administrators</h3>
-                <p>Monitor platform-wide analytics, manage supplier onboarding, track commissions, and ensure quality compliance across all operations.</p>
+            <div class="product-card">
+                <div class="num-small">Administration</div>
+                <h3>Complete platform oversight</h3>
+                <p>Monitor platform-wide analytics, manage supplier onboarding and verification, configure commission structures, track settlements, and ensure quality compliance across all operations.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features" id="features">
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="container">
-        <div class="sec-overline">Platform Capabilities</div>
-        <h2 class="sec-title">Everything built in.</h2>
-        <p class="sec-desc">Not a prototype. Not an MVP. A fully architected platform with real business logic.</p>
-        <div class="features-grid">
-            <div class="feature-item">
-                <div class="feature-icon">🕐</div>
-                <h4>2-Hour Delivery Slots</h4>
-                <p>Configurable time windows with capacity management per supplier.</p>
+        <p class="label">Why WaterTins</p>
+        <h2 class="title">Built for real<br>business operations.</h2>
+        <p class="subtitle">Not a concept. A production-ready platform designed to handle the complexity of India's water delivery ecosystem.</p>
+        <div class="feat-grid">
+            <div class="feat">
+                <h4>Scheduled Delivery Windows</h4>
+                <p>Customers pick 2-hour delivery slots. Suppliers manage capacity per slot to prevent over-promising and ensure on-time delivery.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">💳</div>
-                <h4>PayU Integration</h4>
-                <p>UPI, cards, wallets, net banking. Bill Later for connected customers.</p>
+            <div class="feat">
+                <h4>Digital Payments</h4>
+                <p>Accept UPI, cards, wallets, and net banking. Automated invoicing and billing for recurring customers. No more cash disputes.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🗺️</div>
-                <h4>Google Maps</h4>
-                <p>Location-based supplier discovery and delivery address management.</p>
+            <div class="feat">
+                <h4>Smart Supplier Discovery</h4>
+                <p>Customers automatically see suppliers closest to their location, with verified quality ratings and real-time availability.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🔄</div>
-                <h4>Auto-Orders</h4>
-                <p>Recurring subscriptions — set it once, get water automatically.</p>
+            <div class="feat">
+                <h4>Recurring Subscriptions</h4>
+                <p>Customers set frequency and quantity once. Orders are created automatically — no repeated manual ordering for daily essentials.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🏷️</div>
-                <h4>Smart Deposits</h4>
-                <p>Different deposit rules for connected vs non-connected customers.</p>
+            <div class="feat">
+                <h4>Deposit and Can Tracking</h4>
+                <p>Track refundable can deposits, empty returns, and inventory across the entire supply chain with full transparency.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">📊</div>
-                <h4>Commission Engine</h4>
-                <p>Flexible: supplier pays 1% or customer pays platform fee per order.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">👥</div>
-                <h4>Staff Management</h4>
-                <p>Delivery staff onboarding, login, session tracking, and assignment.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">🔐</div>
-                <h4>Firebase Auth</h4>
-                <p>Phone OTP authentication for mobile. JWT for admin access.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">🔔</div>
-                <h4>Push Notifications</h4>
-                <p>Real-time order updates, delivery alerts, and promotional notifications.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">📦</div>
-                <h4>Product Catalog</h4>
-                <p>RO, UV, RO+UV water types. Normal, cold, hot. Configurable per supplier.</p>
+            <div class="feat">
+                <h4>Revenue Analytics</h4>
+                <p>Suppliers get monthly reports on revenue, order trends, top customers, and settlement breakdowns to make better business decisions.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- AI -->
-<section class="ai" id="ai">
+<section class="section" id="ai">
     <div class="container">
-        <div class="sec-overline">AI Integration Roadmap</div>
-        <h2 class="sec-title">Intelligence<br>at every layer.</h2>
-        <p class="sec-desc">Integrating large language models to automate operations, predict demand, and enable conversational ordering.</p>
+        <p class="label">AI Integration</p>
+        <h2 class="title">Adding intelligence<br>to every interaction.</h2>
+        <p class="subtitle">Integrating large language models to automate customer support, forecast demand, and enable conversational commerce.</p>
         <div class="ai-grid">
             <div class="ai-card">
-                <h3>🤖 AI Customer Support Agent</h3>
-                <p>An LLM-powered chatbot that handles order queries, delivery status, complaints, and FAQs through natural conversation — via WhatsApp and in-app chat. Reduces support workload by 80%.</p>
-                <div class="ai-tag">Conversational AI</div>
+                <div class="tag">Customer Experience</div>
+                <h3>Conversational Support Agent</h3>
+                <p>An AI agent that handles order queries, delivery status checks, complaints, and FAQs through natural language — available through WhatsApp and in-app messaging, reducing support overhead by up to 80%.</p>
             </div>
             <div class="ai-card">
-                <h3>📈 Demand Forecasting Engine</h3>
-                <p>Analyzes historical order data, weather patterns, and seasonal trends to predict daily demand per supplier. Helps suppliers pre-stock inventory, reduce wastage, and optimize delivery routes.</p>
-                <div class="ai-tag">Predictive Analytics</div>
+                <div class="tag">Operations</div>
+                <h3>Demand Forecasting</h3>
+                <p>AI analyzes historical order data, seasonal trends, and local events to predict daily demand per supplier — enabling pre-stocking, reducing wastage, and improving delivery reliability.</p>
             </div>
             <div class="ai-card">
-                <h3>💬 Natural Language Ordering</h3>
-                <p>Customers text "Send 2 RO cans tomorrow 8 AM" — AI parses the intent, validates the slot, selects the supplier, and creates the order. Zero UI interaction needed.</p>
-                <div class="ai-tag">Natural Language Understanding</div>
+                <div class="tag">Commerce</div>
+                <h3>Natural Language Ordering</h3>
+                <p>Customers type "Send 2 RO cans tomorrow 8 AM" and the system parses intent, validates availability, selects the optimal supplier, and creates the order — zero UI interaction required.</p>
             </div>
         </div>
     </div>
 </section>
 
-
-
-<!-- FOUNDER -->
-<section class="founder" id="about">
+<section class="section" id="team" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div class="container">
-        <div class="sec-overline">Team</div>
-        <h2 class="sec-title">Built by engineers.</h2>
-        <div class="founder-card">
-            <div class="founder-avatar">BS</div>
-            <div class="founder-info">
+        <p class="label">Team</p>
+        <h2 class="title">Built by engineers.</h2>
+        <p class="subtitle"></p>
+        <div class="founder-row">
+            <div class="avatar">BS</div>
+            <div class="founder-text">
                 <h3>Bala Sai Boppana</h3>
-                <div class="role">Founder · Full-Stack & AI Engineer</div>
-                <p>GenAI Engineer with production experience in LLM-powered applications, RAG pipelines, and scalable API systems. Previously built AI agents, document intelligence systems, and clinical analytics dashboards. B.E. in Computer Science (AI & ML).</p>
-                <div class="founder-links">
-                    <a href="https://github.com/bala11836" class="founder-link" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/bala-sai" class="founder-link" target="_blank">LinkedIn</a>
-                    <a href="mailto:bala@hoventis.in" class="founder-link">bala@hoventis.in</a>
+                <div class="role">Founder &middot; Full-Stack & AI Engineer</div>
+                <p>AI engineer with production experience building LLM-powered applications, RAG-based document intelligence systems, autonomous AI agents, and clinical analytics platforms. B.E. in Computer Science (AI & ML), Chandigarh University.</p>
+                <div class="f-links">
+                    <a href="https://github.com/bala11836" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/bala-sai" target="_blank">LinkedIn</a>
+                    <a href="mailto:bala@hoventis.in">bala@hoventis.in</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-    <h2>Let's build the future<br>of water delivery.</h2>
-    <p>Interested in partnering, investing, or joining? We'd love to talk.</p>
-    <a href="mailto:bala@hoventis.in" class="btn btn-fill">Contact Us →</a>
-    <div class="cta-email">bala@hoventis.in · Hyderabad, India</div>
+<section class="cta-sec">
+    <h2>Let's build the future of<br>water delivery together.</h2>
+    <p>Interested in our product, partnership, or investment opportunities.</p>
+    <a href="mailto:bala@hoventis.in" class="btn btn-primary">Contact Us</a>
+    <div class="cta-email">bala@hoventis.in &middot; Hyderabad, India</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    <div class="footer-badge">
-        <span class="dot"></span>
-        Registered MSME · UDYAM-TS-09-0199927
-    </div>
-    <p>Hoventis · Hyderabad, Telangana, India</p>
-    <p>NIC Code: 63122 — Operation of web portals</p>
-    <p style="margin-top: 12px;">© 2025 Hoventis. All rights reserved.</p>
+    <div class="footer-reg">MSME Registered &middot; UDYAM-TS-09-0199927 &middot; NIC 63122</div>
+    <p>Hoventis &middot; Hyderabad, Telangana, India</p>
+    <p>&copy; 2025 Hoventis. All rights reserved.</p>
 </footer>
 
 </body>
